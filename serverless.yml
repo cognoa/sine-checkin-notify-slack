@@ -1,0 +1,70 @@
+service: sine-checkin-notify-slack
+
+package:
+  exclude:
+    - .gitignore
+    - event.json
+    - bare-event.json
+    - serverless.yml
+    - package.json
+    - yarn.lock
+
+  artifact: sine-checkin-notify-slack.zip
+
+plugins:
+  - serverless-secrets
+  - serverless-plugin-zip-symlinks-compress-harder
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  memorySize: 128
+  timeout: 10
+  cfLogs: true
+
+  stage: ${opt:stage,'prod'}
+
+# Place into us-west-2
+  region: us-west-2
+
+# Secrets
+  environmentSecrets:
+    SLACK_TOKEN: '/sine-checkin-notify-slack/${self:provider.stage}/SLACK_TOKEN'
+    SINE_API_KEY: '/sine-checkin-notify-slack/${self:provider.stage}/SINE_API_KEY'
+
+custom:
+  serverlessSecrets:
+    throwOnMissingSecret: true
+    providerOptions:
+      region: us-west-2
+
+functions:
+
+  injestSigninBefore:
+    handler: handler.injestSigninBefore
+    description: Injest and process the signin_before event
+    events:
+      - http:
+          path: sine/signin_before
+          method: post
+          integration: lambda
+          request:
+            template:
+              application/json: '{ "payload": $input.json(''$'') }'
+          response:
+              statusCodes:
+                200:
+                  pattern: ''
+                500:
+                  pattern: '.*("(code|details|message)":.*){3}'
+                  template:
+                    application/json: $input.path("$.errorMessage")
+
+resources:
+  Resources:
+    pathmapping:
+      Type: AWS::ApiGateway::BasePathMapping
+      Properties:
+        DomainName: "sine.webhooks.cognoa-staging.com"
+        RestApiId:
+          Ref: ApiGatewayRestApi
