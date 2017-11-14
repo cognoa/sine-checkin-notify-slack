@@ -21,7 +21,7 @@ module.exports.injestSigninBefore = (event, context, callback) =>
         console.log(event, context);
         return slackbot.chat.postMessage({
             channel: '#frontdesk-signin',
-            text: 'test message',
+            text: '```'+JSON.stringify(event)+'```',
         });
     })
     .then(res => {
