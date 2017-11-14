@@ -15,13 +15,17 @@ var slackbotPromise = new Promise((resolve, reject) => {
     });
 });
 
-module.exports.injestSigninBefore = (event, context, callback) =>
+module.exports.injestSineEvents = (event, context, callback) =>
 {
     slackbotPromise.then(slackbot => {
-        console.log(event, context);
+        if(!event.headers || event.headers['X-Sine-Auth'] != process.env.SINE_API_KEY)
+        {
+            return Promise.reject('Missing or incorrect auth header');
+        }
+
         return slackbot.chat.postMessage({
             channel: '#frontdesk-signin',
-            text: '```'+JSON.stringify(event)+'```',
+            text: `${event.payload.data.firstName} ${event.payload.data.lastName} from ${event.payload.data.company} is here to see ${event.payload.data.host.firstName} ${event.payload.data.host.lastName}:\`\`\`${JSON.stringify(event)}\`\`\``,
         });
     })
     .then(res => {

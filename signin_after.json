@@ -1,0 +1,45 @@
+{   "headers": {
+        "X-Sine-Auth": "eben.soil.ribald.tideland"
+    },
+    "payload":
+    {
+      "event": "signin_after",
+      "date": "2017-06-23T07:36:36Z",
+      "data": {
+        "id": "b32aea27-62bd-4eae-b17c-3474c29334ac",
+        "autoExpired": false,
+        "status": "active",
+        "firstName": "Foo",
+        "lastName": "Baz",
+        "email": "foo@baz.com",
+        "mobileVerified": false,
+        "emailVerified": false,
+        "startDate": "2017-06-23T07:36:36.061Z",
+        "expiresDate": "2017-06-23T21:36:36.061Z",
+        "formResponsesSignOut": null,
+        "mobile": null,
+        "photoURL": null,
+        "formResponses": null,
+        "host": {
+          "id": "deb6872d-29bd-4288-929f-7f2644bcd6a4",
+          "email": "foo@baz.com",
+          "mobile": null,
+          "company": null,
+          "lastName": "Baz",
+          "photoURL": null,
+          "firstName": "Foo",
+          "hostGroup": "7fc42616-95d1-499d-8c73-b59d26aadba4",
+          "hostGroupName": "Required"
+        },
+        "site": {
+          "id": "1eb39270-b043-4aaf-8839-ca16bc6a200d",
+          "name": "Require a host"
+        },
+        "visitorType": {
+          "id": "bd1409b6-2ff0-46b9-bf33-8d3042518fb0",
+          "name": "Visitor"
+        }
+      },
+      "externalId": "xxx"
+    }
+}

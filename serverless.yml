@@ -3,9 +3,8 @@ service: sine-checkin-notify-slack
 package:
   exclude:
     - .gitignore
-    - event.json
-    - event-raw.json
-    - bare-event.json
+    - signin_after.json
+    - signin_after-raw.json
     - serverless.yml
     - package.json
     - yarn.lock
@@ -44,17 +43,17 @@ custom:
 
 functions:
 
-  injestSigninBefore:
-    handler: handler.injestSigninBefore
-    description: Injest and process the signin_before event
+  injestSineEvents:
+    handler: handler.injestSineEvents
+    description: Injest and process the Sine notification events by posting them to Slack
     events:
       - http:
-          path: sine/signin_before
+          path: sine/notify
           method: post
           integration: lambda
           request:
             template:
-              application/json: '{ "payload": $input.json(''$'') }'
+              application/json: '{ "payload": $input.json(''$''), "headers": { #foreach($param in $input.params().header.keySet()) "$param": "$util.escapeJavaScript($input.params().header.get($param))" #if($foreach.hasNext),#end #end } }'
           response:
               statusCodes:
                 200:
