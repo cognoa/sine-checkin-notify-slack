@@ -11,6 +11,7 @@ package:
     - yarn.lock
   include:
     - .serverless-secrets.json
+    - handler.js
 
   artifact: sine-checkin-notify-slack.zip
 
