@@ -4,10 +4,13 @@ package:
   exclude:
     - .gitignore
     - event.json
+    - event-raw.json
     - bare-event.json
     - serverless.yml
     - package.json
     - yarn.lock
+  include:
+    - .serverless-secrets.json
 
   artifact: sine-checkin-notify-slack.zip
 
