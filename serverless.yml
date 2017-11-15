@@ -27,10 +27,27 @@ provider:
 
   stage: ${opt:stage,'prod'}
 
-# Place into us-west-2
+  # Place into us-west-2
   region: us-west-2
 
-# Secrets
+  # Authorize creation of log groups and putting log events
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "logs:DescribeLogStreams"
+        - "logs:CreateLogGroup"
+        - "logs:CreateLogStream"
+        - "logs:PutLogEvents"
+      Resource:
+        - 'Fn::Join':
+          - ':'
+          -
+            - 'arn:aws:logs'
+            - Ref: 'AWS::Region'
+            - Ref: 'AWS::AccountId'
+            - 'log-group:PremisesVisitorLogs:*:*'
+
+  # Secrets
   environmentSecrets:
     SLACK_TOKEN: '/sine-checkin-notify-slack/${self:provider.stage}/SLACK_TOKEN'
     SINE_API_KEY: '/sine-checkin-notify-slack/${self:provider.stage}/SINE_API_KEY'
@@ -65,6 +82,12 @@ functions:
 
 resources:
   Resources:
+    premisesVisitorLogGroup:
+      Type: AWS::Logs::LogGroup
+      DeletionPolicy: Retain
+      Properties:
+        LogGroupName: PremisesVisitorLogs
+
     pathmapping:
       Type: AWS::ApiGateway::BasePathMapping
       Properties:
