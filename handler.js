@@ -1,13 +1,27 @@
 'use strict';
 
 const moment = require('moment');
+const promisify = require('es6-promisify');
+const Slack = require('slack');
+const Logger = new require('cloudwatchlogger');
 
 // No idea what this is: serverless-secrets crashes without it when run locally
 if(process.env._HANDLER === undefined) { process.env._HANDLER = 'asdf.asdf'; }
 
+
+const LogInstance = new Logger({
+    region: 'us-west-2',
+    batchSize: 10,
+    batchDelay: 50,
+    timeout: 500,
+});
+
+const makeLogger = promisify(LogInstance.setupLogger, LogInstance);
+const LOG_GROUP_NAME = 'PremisesVisitorLogs';
+var loggerPromise;
+
 const secretsPromise = require('serverless-secrets/client').load();
 
-const Slack = require('slack');
 var slackbotPromise = new Promise((resolve, reject) => {
     secretsPromise.then(() => {
         resolve(new Slack({token: process.env.SLACK_TOKEN}));
@@ -16,7 +30,6 @@ var slackbotPromise = new Promise((resolve, reject) => {
         reject(err);
     });
 });
-
 
 const signin_after = (data, date) => {
     return slackbotPromise.then(slackbot => {
@@ -98,7 +111,11 @@ const signout_after = (data, date) => {
 }
 
 module.exports.injestSineEvents = (event, context, callback) => {
-    Promise.resolve()
+    if(loggerPromise === undefined) {
+        loggerPromise = makeLogger(LOG_GROUP_NAME, `premises-visitor-log-${context.logStreamName}`);
+    }
+
+    loggerPromise.then(logger => logger.log(event))
     .then(() => {
         if(!process.env.IS_LOCAL && (!event || !event.headers || event.headers['X-Sine-Auth'] != process.env.SINE_API_KEY)) {
             return Promise.reject('Missing or incorrect auth header');
