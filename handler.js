@@ -38,9 +38,9 @@ const signin_after = (data, date) => {
                             text: '',
                             "attachments": [
                                 {
-                                    "fallback": `${data.firstName} ${data.lastName} from ${data.company} is here to see ${data.host.firstName} ${data.host.lastName}.`,
+                                    "fallback": `${data.firstName} ${data.lastName} from ${data.company} is here to see ${data.host.firstName} ${data.host.lastName} (${data.host.hostGroupName || 'No Group'}).`,
                                     "color": "good",
-                                    "title": `${data.firstName} ${data.lastName} from ${data.company} is here to see ${data.host.firstName} ${data.host.lastName}.`,
+                                    "title": `${data.firstName} ${data.lastName} from ${data.company} is here to see ${data.host.firstName} ${data.host.lastName} (${data.host.hostGroupName || 'No Group'}).`,
                                     "text": 'Please come find me in reception.',
                                     "title_link": "https://dashboard.sine.co/#/",
                                     "fields": [
@@ -80,7 +80,7 @@ const signout_after = (data, date) => {
                                     "fallback": `${data.firstName} ${data.lastName} from ${data.company} has left the building.`,
                                     "color": "danger",
                                     "title": `${data.firstName} ${data.lastName} from ${data.company} has left the building.`,
-                                    "text": `${data.firstName} had been visiting ${data.host.firstName} ${data.host.lastName}.`,
+                                    "text": `${data.firstName} had been visiting ${data.host.firstName} ${data.host.lastName} (${data.host.hostGroupName || 'No Group'}).`,
                                     "title_link": "https://dashboard.sine.co/#/",
                                     "fields": [
                                         {
