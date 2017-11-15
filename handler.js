@@ -33,9 +33,8 @@ var slackbotPromise = new Promise((resolve, reject) => {
 
 const signin_after = (data, date) => {
     return slackbotPromise.then(slackbot => {
-
         const message = {
-                            channel: '#frontdesk-signin',
+                            channel: process.env.SLACK_CHANNEL || '#general',
                             text: '',
                             "attachments": [
                                 {
@@ -74,7 +73,7 @@ const signin_after = (data, date) => {
 const signout_after = (data, date) => {
     return slackbotPromise.then(slackbot => {
         const message = {
-                            channel: '#frontdesk-signin',
+                            channel: process.env.SLACK_CHANNEL || '#general',
                             text: '',
                             "attachments": [
                                 {

@@ -50,7 +50,9 @@ provider:
   # Secrets
   environmentSecrets:
     SLACK_TOKEN: '/sine-checkin-notify-slack/${self:provider.stage}/SLACK_TOKEN'
+    SLACK_CHANNEL: '/sine-checkin-notify-slack/${self:provider.stage}/SLACK_CHANNEL'
     SINE_API_KEY: '/sine-checkin-notify-slack/${self:provider.stage}/SINE_API_KEY'
+
 
 custom:
   serverlessSecrets:
