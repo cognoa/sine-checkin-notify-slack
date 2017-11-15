@@ -18,7 +18,7 @@ var slackbotPromise = new Promise((resolve, reject) => {
 module.exports.injestSineEvents = (event, context, callback) =>
 {
     slackbotPromise.then(slackbot => {
-        if(!event.headers || event.headers['X-Sine-Auth'] != process.env.SINE_API_KEY)
+        if(!process.env.IS_LOCAL && (!event.headers || event.headers['X-Sine-Auth'] != process.env.SINE_API_KEY))
         {
             return Promise.reject('Missing or incorrect auth header');
         }
