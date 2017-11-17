@@ -37,7 +37,7 @@ const signin_after = (data, date) => {
                             channel: process.env.SLACK_CHANNEL || '#general',
                             as_user: false,
                             username: 'BasilBot',
-                            icon_url: 'https://rungie.com/basil.jph',
+                            icon_url: 'https://rungie.com/basil.jpg',
                             text: '',
                             "attachments": [
                                 {
@@ -79,7 +79,7 @@ const signout_after = (data, date) => {
                             channel: process.env.SLACK_CHANNEL || '#general',
                             as_user: false,
                             username: 'BasilBot',
-                            icon_url: 'https://rungie.com/basil.jph',
+                            icon_url: 'https://rungie.com/basil.jpg',
                             text: '',
                             "attachments": [
                                 {
