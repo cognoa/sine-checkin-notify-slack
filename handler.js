@@ -36,8 +36,8 @@ const signin_after = (data, date) => {
         const message = {
                             channel: process.env.SLACK_CHANNEL || '#general',
                             as_user: false,
-                            username: 'SignInBot',
-                            icon_url: 'https://dashboard.sine.co/v0.26.1.8914409/img/sine-logo-light.png',
+                            username: 'BasilBot',
+                            icon_url: 'https://rungie.com/basil.jph',
                             text: '',
                             "attachments": [
                                 {
@@ -78,8 +78,8 @@ const signout_after = (data, date) => {
         const message = {
                             channel: process.env.SLACK_CHANNEL || '#general',
                             as_user: false,
-                            username: 'SignInBot',
-                            icon_url: 'https://dashboard.sine.co/v0.26.1.8914409/img/sine-logo-light.png',
+                            username: 'BasilBot',
+                            icon_url: 'https://rungie.com/basil.jph',
                             text: '',
                             "attachments": [
                                 {
