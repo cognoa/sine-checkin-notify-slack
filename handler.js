@@ -1,7 +1,7 @@
 'use strict';
 
 const moment = require('moment');
-const promisify = require('es6-promisify');
+const promisify = require('util').promisify;
 const Slack = require('slack');
 const Logger = new require('cloudwatchlogger');
 
