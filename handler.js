@@ -1,7 +1,7 @@
 'use strict';
 
 const moment = require('moment');
-const promisify = require('util').promisify;
+const { promisify } = require('util');
 const Slack = require('slack');
 const Logger = new require('cloudwatchlogger');
 
@@ -16,7 +16,7 @@ const LogInstance = new Logger({
     timeout: 500,
 });
 
-const makeLogger = promisify(LogInstance.setupLogger, LogInstance);
+const makeLogger = promisify(LogInstance.setupLogger.bind(LogInstance));
 const LOG_GROUP_NAME = 'PremisesVisitorLogs';
 var loggerPromise;
 
@@ -115,7 +115,7 @@ const signout_after = (data, date) => {
     });
 }
 
-module.exports.injestSineEvents = (event, context, callback) => {
+exports.injestSineEvents = (event, context, callback) => {
     if(loggerPromise === undefined) {
         loggerPromise = makeLogger(LOG_GROUP_NAME, `premises-visitor-log-${context.logStreamName}`);
     }
