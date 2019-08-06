@@ -20,7 +20,7 @@ plugins:
 
 provider:
   name: aws
-  runtime: nodejs8.10
+  runtime: nodejs10.x
   memorySize: 128
   timeout: 10
   cfLogs: true
