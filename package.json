@@ -1,6 +1,6 @@
 {
   "name": "sine-checkin-notify-slack",
-  "version": "1.1.6",
+  "version": "1.1.8",
   "description": "Webhook handler for Sine notifications to Slack",
   "main": "handler.js",
   "scripts": {
