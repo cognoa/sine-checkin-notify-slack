@@ -30,6 +30,10 @@ provider:
   # Place into us-west-2
   region: us-west-2
 
+  deploymentBucket:
+    name: ${ssm:/serverless/deploymentbucket/prefix}-${self:provider.region}
+    blockPublicAccess: true
+
   # Authorize creation of log groups and putting log events
   iamRoleStatements:
     - Effect: "Allow"
