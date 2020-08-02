@@ -1,13 +1,6 @@
 service: sine-checkin-notify-slack
 
 package:
-  exclude:
-    - .gitignore
-    - signin_after.json
-    - signin_after-raw.json
-    - serverless.yml
-    - package.json
-    - yarn.lock
   include:
     - .serverless-secrets.json
     - handler.js
