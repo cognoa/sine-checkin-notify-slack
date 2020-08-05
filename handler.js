@@ -123,12 +123,12 @@ module.exports.injestSineEvents = async (event, context) => {
     return loggerPromise.then(logger => logger.log(event))
     .then(() => {
         if(!process.env.IS_LOCAL && (!event || !event.headers || event.headers['X-Sine-Auth'] != process.env.SINE_API_KEY)) {
-            return Promise.reject('[400] Missing or incorrect X-Sine-Auth header');
+            throw '[400] Missing or incorrect X-Sine-Auth header';
         }
 
         // Basic event validation
         if(!event || !event.payload || !event.payload.event || !event.payload.data) {
-            return Promise.reject("[500] There's something very wrong about the event format");
+            throw "[500] There's something very wrong about the event format";
         }
 
         // Check if this is signin or signout
@@ -138,7 +138,7 @@ module.exports.injestSineEvents = async (event, context) => {
             case 'signout_after':
                 return signout_after(event.payload.data, event.payload.date);
             default:
-                return Promise.reject(`[500] Unhandled event type: ${event.payload.event}`);
+                throw `[500] Unhandled event type: ${event.payload.event}`;
         }
     })
     .then(() => {

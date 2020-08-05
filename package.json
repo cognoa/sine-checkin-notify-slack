@@ -16,9 +16,9 @@
     "slack": "^11.0.2"
   },
   "devDependencies": {
-    "@hughescr/eslint-config-default": "^2.5.0",
+    "@hughescr/eslint-config-default": "^2.8.2",
     "eslint": "^7.6.0",
-    "serverless": "^1.77.1",
+    "serverless": "^1.78.1",
     "serverless-plugin-zip-symlinks-compress-harder": "^0.10.3"
   }
 }
