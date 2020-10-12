@@ -1,6 +1,6 @@
 {
   "name": "sine-checkin-notify-slack",
-  "version": "1.1.10",
+  "version": "1.2.1",
   "description": "Webhook handler for Sine notifications to Slack",
   "main": "handler.js",
   "scripts": {
@@ -11,12 +11,14 @@
   "license": "BSD-3-Clause",
   "dependencies": {
     "cloudwatchlogger": "hughescr/cloudwatchlogger#develop",
-    "moment": "^2.27.0",
+    "moment": "^2.29.1",
     "serverless-secrets": "^3.0.0-beta.12",
     "slack": "^11.0.2"
   },
   "devDependencies": {
-    "serverless": "^1.75.1",
-    "serverless-plugin-zip-symlinks-compress-harder": "^0.10.2"
+    "@hughescr/eslint-config-default": "^2.8.3",
+    "eslint": "^7.11.0",
+    "serverless": "^2.6.0",
+    "serverless-plugin-zip-symlinks-compress-harder": "^0.10.3"
   }
 }
