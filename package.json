@@ -11,14 +11,14 @@
   "license": "BSD-3-Clause",
   "dependencies": {
     "cloudwatchlogger": "hughescr/cloudwatchlogger#develop",
-    "moment": "^2.27.0",
+    "moment": "^2.29.1",
     "serverless-secrets": "^3.0.0-beta.12",
     "slack": "^11.0.2"
   },
   "devDependencies": {
-    "@hughescr/eslint-config-default": "^2.8.2",
-    "eslint": "^7.6.0",
-    "serverless": "^1.78.1",
+    "@hughescr/eslint-config-default": "^2.8.3",
+    "eslint": "^7.11.0",
+    "serverless": "^2.6.0",
     "serverless-plugin-zip-symlinks-compress-harder": "^0.10.3"
   }
 }
