@@ -10,13 +10,13 @@
   "author": "Craig Hughes",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "cloudwatchlogger": "hughescr/cloudwatchlogger#develop",
+    "cloudwatchlogger": "@cognoa/cloudwatchlogger#develop",
     "moment": "^2.29.1",
     "serverless-secrets": "^3.0.0-beta.12",
     "slack": "^11.0.2"
   },
   "devDependencies": {
-    "@hughescr/eslint-config-default": "^2.8.3",
+    "@cognoa/eslint-config-default": "^2.8.3",
     "eslint": "^7.11.0",
     "serverless": "^2.6.0",
     "serverless-plugin-zip-symlinks-compress-harder": "^0.10.3"
