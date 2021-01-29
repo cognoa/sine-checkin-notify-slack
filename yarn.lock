@@ -47,9 +47,9 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@cognoa/eslint-config-default@^2.8.3":
-  version "2.8.3"
-  resolved "https://registry.yarnpkg.com/@hughescr/eslint-config-default/-/eslint-config-default-2.8.3.tgz#04509047193d7dbeed0d09282be8be3128f77f03"
+"@cognoa/eslint-config-default@^2.8.4":
+  version "2.8.4"
+  resolved "https://registry.yarnpkg.com/@cognoa/eslint-config-default/-/eslint-config-default-2.8.4.tgz#04509047193d7dbeed0d09282be8be3128f77f03"
   integrity sha512-UX2Wn/IhShUrkBkVWpCl62j371m+SgERO1L/QMN447DYRwTMZ0Mlog/fcfXmTVlIfxNy5XTFm4JLn7hHyX19gg==
   dependencies:
     eslint-formatter-git-log "^0.5.3"

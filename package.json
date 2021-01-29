@@ -16,7 +16,7 @@
     "slack": "^11.0.2"
   },
   "devDependencies": {
-    "@cognoa/eslint-config-default": "^2.8.3",
+    "@cognoa/eslint-config-default": "^2.8.4",
     "eslint": "^7.11.0",
     "serverless": "^2.6.0",
     "serverless-plugin-zip-symlinks-compress-harder": "^0.10.3"
