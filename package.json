@@ -11,7 +11,7 @@
   "license": "BSD-3-Clause",
   "dependencies": {
     "cloudwatchlogger": "hughescr/cloudwatchlogger#develop",
-    "moment": "^2.29.1",
+    "moment": "^2.29.2",
     "serverless-secrets": "^3.0.0-beta.12",
     "slack": "^11.0.2"
   },
